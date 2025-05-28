@@ -1,0 +1,9 @@
+*~ 
+*,*
+*.tmp
+*.out
+misc_img
+cmd.txt
+__pycache__
+tmp
+dist

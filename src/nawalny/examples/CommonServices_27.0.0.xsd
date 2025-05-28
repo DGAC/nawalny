@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- B2B revision = 27.2.0.2.66 -->
+<xs:schema version="1.0"
+           targetNamespace="eurocontrol/cfmu/b2b/CommonServices"
+           xmlns:common="eurocontrol/cfmu/b2b/CommonServices"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="MessagePullRequest" type="common:MessagePullRequest"/>
+  <xs:element name="SubscriptionDeletionRequest" type="common:SubscriptionDeletionRequest"/>
+  <xs:element name="SubscriptionHistoryRequest" type="common:SubscriptionHistoryRequest"/>
+  <xs:element name="SubscriptionListRequest" type="common:SubscriptionListRequest"/>
+  <xs:element name="SubscriptionPauseRequest" type="common:SubscriptionPauseRequest"/>
+  <xs:element name="SubscriptionResumeRequest" type="common:SubscriptionResumeRequest"/>
+  <xs:element name="SubscriptionSynchronisationAbortRequest" type="common:SubscriptionSynchronisationAbortRequest"/>
+  <xs:element name="SubscriptionSynchronisationRequest" type="common:SubscriptionSynchronisationRequest"/>
+  <xs:element name="MessagePullReply" type="common:MessagePullReply"/>
+  <xs:element name="SubscriptionDeletionReply" type="common:SubscriptionDeletionReply"/>
+  <xs:element name="SubscriptionHistoryReply" type="common:SubscriptionHistoryReply"/>
+  <xs:element name="SubscriptionListReply" type="common:SubscriptionListReply"/>
+  <xs:element name="SubscriptionPauseReply" type="common:SubscriptionPauseReply"/>
+  <xs:element name="SubscriptionResumeReply" type="common:SubscriptionResumeReply"/>
+  <xs:element name="SubscriptionSynchronisationAbortReply" type="common:SubscriptionSynchronisationAbortReply"/>
+  <xs:element name="SubscriptionSynchronisationReply" type="common:SubscriptionSynchronisationReply"/>
+  <xs:element name="HeartbeatTechnicalMessage" type="common:HeartbeatTechnicalMessage"/>
+  <xs:element name="SubscriptionSynchronisationTechnicalMessage" type="common:SubscriptionSynchronisationTechnicalMessage"/>
+  <xs:element name="SubscriptionTechnicalMessage" type="common:SubscriptionTechnicalMessage"/>
+  <xs:simpleType name="AirNavigationUnitId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([A-Z]|[0-9])|[_ \-\+/\\\|\*=&lt;&gt;,.;:?!'`&quot;~@#$%^&amp;\(\)\[\]\{\}]){1,12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Base64Encoded">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Bearing">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/><xs:maxInclusive value="360"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Colours">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_ \-\+/\\\|\*=&lt;&gt;,.;:?!'`&quot;~@#$%^&amp;\(\)\[\]\{\}]{1,51}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CorrelationId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_ \-\+/\\\|\*=&lt;&gt;,.;:?!'`&quot;~@#$%^&amp;\(\)\[\]\{\}]{1,256}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Cost">
+    <xs:restriction base="xs:int">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DateTimeMinute">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((((((([0-9]{4}(\-))[0-9]{2})(\-))[0-9]{2})( ))[0-9]{2})(:))[0-9]{2})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DateTimeSecond">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((((((((([0-9]{4}(\-))[0-9]{2})(\-))[0-9]{2})( ))[0-9]{2})(:))[0-9]{2})(:))[0-9]{2})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DateYearMonthDay">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((([0-9]{4}(\-))[0-9]{2})(\-))[0-9]{2})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DistanceM">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DistanceNM">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Duration">
+    <xs:restriction base="xs:long">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DurationHourMinute">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DurationHourMinuteSecond">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{6}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DurationMinute">
+    <xs:restriction base="xs:long">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FileId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="((((([a-zA-Z]|[0-9])|(\.))|(_))|(\-))|(/)){1,200}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FileType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z]{1,50}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FlightLevelM">
+    <xs:restriction base="xs:int">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LongDurationHourMinute">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{4,10}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NMB2BProviderVersion">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NMB2BVersion">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((([0-9]{2}(\.))[0-9])(\.))[0-9])"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NMRelease">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((([0-9]{2}(\.))[0-9])(\.))[0-9])"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PlanDataId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((((O)|(F))|(S))[0-9]{14})([A-Z]|[0-9]){0,40})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PSMessageElement">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="QueueName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_ \-\+/\\\|\*=&lt;&gt;,.;:?!'`&quot;~@#$%^&amp;\(\)\[\]\{\}]{1,200}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SignedDistanceNM">
+    <xs:restriction base="xs:int">
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SignedDurationHourMinute">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((\+)|(\-))[0-9]{4})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SignedDurationHourMinuteSecond">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((\+)|(\-))[0-9]{6})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SignedWeightKg">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="-999999"/><xs:maxInclusive value="999999"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SimulationId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value=".{1,200}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TextReport">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_ \-\+/\\\|\*=&lt;&gt;,.;:?!'`&quot;~@#$%^&amp;\(\)\[\]\{\}\r\n]{0,1000000}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TimeHourMinute">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([0-9]{2}(:))[0-9]{2})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Timestamp">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(((((((((((([0-9]{4}(\-))[0-9]{2})(\-))[0-9]{2})( ))[0-9]{2})(:))[0-9]{2})(:))[0-9]{2})( ))[0-9]{3})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UserId">
+    <xs:restriction base="xs:string">
+      <xs:pattern value=".{1,11}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UUID">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_ \-\+/\\\|\*=&lt;&gt;,.;:?!'`&quot;~@#$%^&amp;\(\)\[\]\{\}]{36}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VersionNumber">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="WeightKg">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/><xs:maxInclusive value="999999"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DatasetType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FORECAST"/>
+      <xs:enumeration value="OPERATIONAL"/>
+      <xs:enumeration value="SIMULATION"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ErrorCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GEN"/>
+      <xs:enumeration value="SUBSCRIPTION_MANAGEMENT"/>
+      <xs:enumeration value="MESSAGING"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ErrorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNSUPPORTED_VERSION"/>
+      <xs:enumeration value="ATTRIBUTE_CANNOT_BE_NULL"/>
+      <xs:enumeration value="ATTRIBUTE_MUST_BE_NULL"/>
+      <xs:enumeration value="INVALID_COLLECTION_SIZE"/>
+      <xs:enumeration value="INVALID_ATTRIBUTE_VALUE"/>
+      <xs:enumeration value="MISSING_CHOICE_VALUE"/>
+      <xs:enumeration value="CHOICE_OVERFLOW"/>
+      <xs:enumeration value="REQUESTED_ATTRIBUTE_NOT_ALLOWED"/>
+      <xs:enumeration value="REPLY_ATTRIBUTE_NOT_SET"/>
+      <xs:enumeration value="REQUEST_COUNT_QUOTA_EXCEEDED"/>
+      <xs:enumeration value="REQUEST_OVERBOOKING_ACCEPTED"/>
+      <xs:enumeration value="UNKNOWN"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EstimateQualifier">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ESTIMATED"/>
+      <xs:enumeration value="ACTUAL"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ExecutionEnvironment">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPS"/>
+      <xs:enumeration value="OPT"/>
+      <xs:enumeration value="PRE_RELEASE"/>
+      <xs:enumeration value="DEV"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LatitudeSide">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NORTH"/>
+          <xs:enumeration value="SOUTH"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="LogicalOperator">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="AND"/>
+          <xs:enumeration value="OR"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="LongitudeSide">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="EAST"/>
+          <xs:enumeration value="WEST"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="MessageExchangePattern">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="PUBLISH_SUBSCRIBE"/>
+          <xs:enumeration value="REQUEST_REPLY"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="PSMessageType">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="TECHNICAL_MESSAGE"/>
+          <xs:enumeration value="BUSINESS_MESSAGE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="ReceivedOrSent">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="RECEIVED"/>
+          <xs:enumeration value="SENT"/>
+          <xs:enumeration value="UNKNOWN"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="ReplyStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="INVALID_INPUT"/>
+      <xs:enumeration value="INVALID_OUTPUT"/>
+      <xs:enumeration value="INTERNAL_ERROR"/>
+      <xs:enumeration value="SERVICE_UNAVAILABLE"/>
+      <xs:enumeration value="RESOURCE_OVERLOAD"/>
+      <xs:enumeration value="REQUEST_COUNT_QUOTA_EXCEEDED"/>
+      <xs:enumeration value="PARALLEL_REQUEST_COUNT_QUOTA_EXCEEDED"/>
+      <xs:enumeration value="REQUEST_OVERBOOKING_REJECTED"/>
+      <xs:enumeration value="BANDWIDTH_QUOTAS_EXCEEDED"/>
+      <xs:enumeration value="NOT_AUTHORISED"/>
+      <xs:enumeration value="OBJECT_NOT_FOUND"/>
+      <xs:enumeration value="TOO_MANY_RESULTS"/>
+      <xs:enumeration value="OBJECT_EXISTS"/>
+      <xs:enumeration value="OBJECT_OUTDATED"/>
+      <xs:enumeration value="CONFLICTING_UPDATE"/>
+      <xs:enumeration value="INVALID_DATASET"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ServiceGroup">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="COMMON"/>
+      <xs:enumeration value="ADMIN"/>
+      <xs:enumeration value="GENERAL_INFORMATION"/>
+      <xs:enumeration value="AIRSPACE"/>
+      <xs:enumeration value="FLOW"/>
+      <xs:enumeration value="FLIGHT"/>
+      <xs:enumeration value="FFICE"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Sign">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="PLUS"/>
+          <xs:enumeration value="MINUS"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="SimulationState">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="INITIAL"/>
+          <xs:enumeration value="CURRENT"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="SimulationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="STANDALONE_SIMEX"/>
+      <xs:enumeration value="NMOC_MANAGED_SIMULATION"/>
+      <xs:enumeration value="USER_MANAGED_SIMULATION"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SubscriptionField">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="state"/>
+          <xs:enumeration value="description"/>
+          <xs:enumeration value="messageFilter"/>
+          <xs:enumeration value="payloadConfiguration"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="SubscriptionState">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ACTIVE"/>
+          <xs:enumeration value="PAUSED"/>
+          <xs:enumeration value="SUSPENDED_ACTIVE"/>
+          <xs:enumeration value="SUSPENDED_PAUSED"/>
+          <xs:enumeration value="DELETED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="SubscriptionSynchronisationAbortReason">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="USER_REQUEST"/>
+          <xs:enumeration value="MAINTENANCE"/>
+          <xs:enumeration value="SUBSCRIPTION_NOT_ACTIVE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="SubscriptionSynchronisationStatus">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="STARTED"/>
+          <xs:enumeration value="COMPLETED"/>
+          <xs:enumeration value="ABORTED"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="SubscriptionTopic">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ATM_INFORMATION"/>
+          <xs:enumeration value="AIRSPACE_DATA"/>
+          <xs:enumeration value="GNSS_INTERFERENCE"/>
+          <xs:enumeration value="REGULATIONS"/>
+          <xs:enumeration value="REROUTINGS"/>
+          <xs:enumeration value="EAUP"/>
+          <xs:enumeration value="FLIGHT_PLANS"/>
+          <xs:enumeration value="FLIGHT_DATA"/>
+          <xs:enumeration value="FLIGHT_FILING_RESULT"/>
+          <xs:enumeration value="FFICE_PUBLICATION"/>
+          <xs:enumeration value="FFICE_FLIGHT_FILING"/>
+          <xs:enumeration value="MCDM"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="SubscriptionUpdateReason">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="USER_REQUEST"/>
+          <xs:enumeration value="MSG_EXPIRED"/>
+          <xs:enumeration value="MAINTENANCE"/>
+          <xs:enumeration value="NM_UPDATE"/>
+          <xs:enumeration value="QUEUE_OVERFLOW"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="TechnicalTopic">
+    <xs:union>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SUBSCRIPTION"/>
+          <xs:enumeration value="HEARTBEAT"/>
+          <xs:enumeration value="SYNCHRONISATION"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="OTHER:[a-zA-Z_][a-zA-Z0-9_]*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:simpleType name="WeekDay">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUNDAY"/>
+      <xs:enumeration value="MONDAY"/>
+      <xs:enumeration value="TUESDAY"/>
+      <xs:enumeration value="WEDNESDAY"/>
+      <xs:enumeration value="THURSDAY"/>
+      <xs:enumeration value="FRIDAY"/>
+      <xs:enumeration value="SATURDAY"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ARMessage" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:Message">
+    <xs:sequence>
+      <xs:element name="requestReceptionTime" type="common:DateTimeSecond" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="requestId" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="correlationId" type="common:CorrelationId" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="status" type="common:ReplyStatus" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="inputValidationErrors" type="common:Error" minOccurs="0" maxOccurs="100"/>
+      <xs:element name="outputValidationErrors" type="common:Error" minOccurs="0" maxOccurs="100"/>
+      <xs:element name="warnings" type="common:Error" minOccurs="0" maxOccurs="100"/>
+      <xs:element name="slaError" type="common:Error" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="reason" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AsyncReply" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="information" type="common:AsyncReplyInformation" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AsyncReplyInformation" abstract="false">
+    <xs:sequence>
+      <xs:element name="correlationId" type="common:CorrelationId" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="replyMessagePublicationQueueName" type="common:QueueName" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="requestProcessingTimeout" type="common:Duration" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AsyncRequest" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="correlationId" type="common:CorrelationId" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BusinessPSMessage" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:PSMessage">
+    <xs:sequence>
+      <xs:element name="topic" type="common:SubscriptionTopic" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="subscriptionUuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="subscriptionVersion" type="common:VersionNumber" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="parentMessageId" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Dataset" abstract="false">
+    <xs:sequence>
+      <xs:element name="type" type="common:DatasetType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="simulationIdentifier" type="common:SimulationIdentifier" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="simulationState" type="common:SimulationState" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DateTimeMinutePeriod" abstract="false">
+    <xs:sequence>
+      <xs:element name="wef" type="common:DateTimeMinute" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="unt" type="common:DateTimeMinute" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DateTimeMinutePeriodWithUFN" abstract="false">
+    <xs:sequence>
+      <xs:element name="wef" type="common:DateTimeMinute" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="unt" type="common:DateTimeMinute" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DateYearMonthDayPeriod" abstract="false">
+    <xs:sequence>
+      <xs:element name="wef" type="common:DateYearMonthDay" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="unt" type="common:DateYearMonthDay" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Error" abstract="false">
+    <xs:sequence>
+      <xs:element name="attributes" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" minOccurs="0" maxOccurs="unbounded"><xs:simpleType><xs:restriction base="xs:string"></xs:restriction></xs:simpleType></xs:element></xs:sequence></xs:complexType></xs:element>
+      <xs:element name="group" type="common:ServiceGroup" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="category" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value="([a-zA-Z]|(_)){1,100}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="type" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value="(([a-zA-Z]|[0-9])|(_)){1,100}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="parameters" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" minOccurs="0" maxOccurs="unbounded"><xs:complexType><xs:sequence><xs:element name="key" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:maxLength value="1000"/></xs:restriction></xs:simpleType></xs:element><xs:element name="value" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:maxLength value="1000"/></xs:restriction></xs:simpleType></xs:element></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType></xs:element>
+      <xs:element name="message" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:maxLength value="2000"/></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="File" abstract="false">
+    <xs:sequence>
+      <xs:element name="id" type="common:FileId" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="type" type="common:FileType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="releaseTime" type="common:DateTimeSecond" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="fileLength" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:int"><xs:minInclusive value="0"/></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeartbeatTechnicalMessage" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:TechnicalPSMessage">
+    <xs:sequence>
+      <xs:element name="currentSubscriptionState" type="common:SubscriptionState" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="timeToNextPulse" type="common:DateTimeSecond" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LastUpdate" abstract="false">
+    <xs:sequence>
+      <xs:element name="timestamp" type="common:DateTimeSecond" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="userId" type="common:UserId" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="airNavigationUnitId" type="common:AirNavigationUnitId" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Latitude" abstract="false">
+    <xs:sequence>
+      <xs:element name="angle" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value="[0-9]{6}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="side" type="common:LatitudeSide" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Longitude" abstract="false">
+    <xs:sequence>
+      <xs:element name="angle" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value="[0-9]{6,7}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="side" type="common:LongitudeSide" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Message" abstract="true">
+    <xs:sequence>
+      <xs:element name="uuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="timestamp" type="common:Timestamp" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="messageExchangePattern" type="common:MessageExchangePattern" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessagePullReply" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="data" type="common:MessagePullReplyData" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MessagePullReplyData" abstract="false">
+    <xs:sequence>
+      <xs:element name="marshalledMessages" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" type="common:PSMessageElement" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+      <xs:element name="hasMoreMessages" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:boolean"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessagePullRequest" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="queueName" type="common:QueueName" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="maxSize" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:int"><xs:minInclusive value="1"/><xs:maxInclusive value="1000"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="destructive" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:boolean"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="NMPlatform" abstract="false">
+    <xs:sequence>
+      <xs:element name="executionEnvironment" type="common:ExecutionEnvironment" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="applicationInstance" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value="((([A-Z]{3}(_))[A-Z]{2})([A-Z]|[0-9]))"/></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Position" abstract="false">
+    <xs:sequence>
+      <xs:element name="latitude" type="common:Latitude" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="longitude" type="common:Longitude" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PSMessage" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:Message">
+    <xs:sequence>
+      <xs:element name="type" type="common:PSMessageType" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Reply" abstract="true">
+    <xs:sequence>
+      <xs:element name="requestReceptionTime" type="common:DateTimeSecond" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="requestId" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="sendTime" type="common:DateTimeSecond" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="status" type="common:ReplyStatus" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="inputValidationErrors" type="common:Error" minOccurs="0" maxOccurs="100"/>
+      <xs:element name="outputValidationErrors" type="common:Error" minOccurs="0" maxOccurs="100"/>
+      <xs:element name="warnings" type="common:Error" minOccurs="0" maxOccurs="100"/>
+      <xs:element name="slaError" type="common:Error" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="reason" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Request" abstract="true">
+    <xs:sequence>
+      <xs:element name="endUserId" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value="(([a-zA-Z]|[0-9])|(_)){0,30}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="onBehalfOfUnit" type="common:AirNavigationUnitId" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="sendTime" type="common:DateTimeSecond" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ShiftHourMinute" abstract="false">
+    <xs:sequence>
+      <xs:element name="sign" type="common:Sign" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="value" type="common:DurationHourMinute" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SimulationIdentifier" abstract="false">
+    <xs:sequence>
+      <xs:element name="simulationType" type="common:SimulationType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="simulationId" type="common:SimulationId" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Subscription" abstract="true">
+    <xs:sequence>
+      <xs:element name="summary" type="common:SubscriptionSummary" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionCreationRequest" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="description" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value=".{1,500}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="queueName" type="common:QueueName" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionDeletionReply" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="data" type="common:SubscriptionDeletionReplyData" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionDeletionReplyData" abstract="false">
+    <xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionDeletionRequest" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="uuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionHistoryItem" abstract="false">
+    <xs:sequence>
+      <xs:element name="uuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="version" type="common:VersionNumber" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="state" type="common:SubscriptionState" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="description" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value=".{1,500}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="updatedBy" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value=".{1,100}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="updatedOn" type="common:Timestamp" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="updatedReason" type="common:SubscriptionUpdateReason" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="updatedComment" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:maxLength value="256"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="heartbeatEnabled" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:boolean"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionHistoryReply" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="data" type="common:SubscriptionHistoryReplyData" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionHistoryReplyData" abstract="false">
+    <xs:sequence>
+      <xs:element name="history" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" type="common:SubscriptionHistoryItem" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+      <xs:element name="hasMoreItems" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:boolean"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionHistoryRequest" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="uuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="referenceTime" type="common:DateTimeSecond" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionListReply" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="data" type="common:SubscriptionListReplyData" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionListReplyData" abstract="false">
+    <xs:sequence>
+      <xs:element name="subscriptions" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" type="common:SubscriptionSummary" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionListRequest" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="states" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" type="common:SubscriptionState" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionPauseReply" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="data" type="common:SubscriptionPauseReplyData" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionPauseReplyData" abstract="false">
+    <xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionPauseRequest" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="uuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="heartbeatEnabled" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:boolean"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionResumeReply" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="data" type="common:SubscriptionResumeReplyData" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionResumeReplyData" abstract="false">
+    <xs:sequence>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionResumeRequest" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="uuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionRetrievalRequest" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="uuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="version" type="common:VersionNumber" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSummary" abstract="false">
+    <xs:sequence>
+      <xs:element name="uuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="version" type="common:VersionNumber" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="release" type="common:NMRelease" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="anuId" type="common:AirNavigationUnitId" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="queueName" type="common:QueueName" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="topic" type="common:SubscriptionTopic" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="state" type="common:SubscriptionState" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="description" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value=".{1,500}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="creationDate" type="common:DateTimeSecond" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="lastUpdatedBy" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value=".{1,100}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="lastUpdatedOn" type="common:Timestamp" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="lastUpdateReason" type="common:SubscriptionUpdateReason" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="lastUpdateComment" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:maxLength value="256"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="heartbeatEnabled" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:boolean"></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSynchronisationAbortReply" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="data" type="common:SubscriptionSynchronisationAbortReplyData" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSynchronisationAbortReplyData" abstract="false">
+    <xs:sequence>
+      <xs:element name="synchronisationSummary" type="common:SubscriptionSynchronisationSummary" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSynchronisationAbortRequest" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="subscriptionUuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSynchronisationReply" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Reply">
+    <xs:sequence>
+      <xs:element name="data" type="common:SubscriptionSynchronisationReplyData" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSynchronisationReplyData" abstract="false">
+    <xs:sequence>
+      <xs:element name="correlationId" type="common:CorrelationId" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="messagesCount" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:int"><xs:minInclusive value="0"/></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSynchronisationRequest" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="subscriptionUuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="wef" type="common:DateTimeMinute" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="til" type="common:DateTimeMinute" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSynchronisationSummary" abstract="false">
+    <xs:sequence>
+      <xs:element name="subscriptionUuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="correlationId" type="common:CorrelationId" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="size" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:int"><xs:minInclusive value="0"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="startTime" type="common:DateTimeSecond" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="endTime" type="common:DateTimeSecond" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="status" type="common:SubscriptionSynchronisationStatus" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="abortReason" type="common:SubscriptionSynchronisationAbortReason" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionSynchronisationTechnicalMessage" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:TechnicalPSMessage">
+    <xs:sequence>
+      <xs:element name="synchronisationSummary" type="common:SubscriptionSynchronisationSummary" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionTechnicalMessage" abstract="false">
+    <xs:complexContent>
+      <xs:extension base="common:TechnicalPSMessage">
+    <xs:sequence>
+      <xs:element name="subscriptionDescription" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value=".{1,500}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="subscriptionState" type="common:SubscriptionState" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="lastUpdatedBy" minOccurs="1" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value=".{1,100}"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="lastUpdatedOn" type="common:Timestamp" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="lastUpdateReason" type="common:SubscriptionUpdateReason" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="lastUpdateComment" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:maxLength value="256"/></xs:restriction></xs:simpleType></xs:element>
+      <xs:element name="updatedFields" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" type="common:SubscriptionField" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SubscriptionUpdateRequest" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:Request">
+    <xs:sequence>
+      <xs:element name="subscriptionUuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="description" minOccurs="0" maxOccurs="1"><xs:simpleType><xs:restriction base="xs:string"><xs:pattern value=".{1,500}"/></xs:restriction></xs:simpleType></xs:element>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TechnicalPSMessage" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="common:PSMessage">
+    <xs:sequence>
+      <xs:element name="topic" type="common:TechnicalTopic" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="subscriptionUuid" type="common:UUID" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="subscriptionVersion" type="common:VersionNumber" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="subscriptionTopic" type="common:SubscriptionTopic" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TimeHourMinutePeriod" abstract="false">
+    <xs:sequence>
+      <xs:element name="wef" type="common:TimeHourMinute" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="unt" type="common:TimeHourMinute" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WeeklySchedule" abstract="false">
+    <xs:sequence>
+      <xs:element name="weeklyScheduleItems" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" type="common:WeeklyScheduleItem" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WeeklyScheduleItem" abstract="false">
+    <xs:sequence>
+      <xs:element name="globalPeriod" type="common:DateTimeMinutePeriodWithUFN" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="weekDaySet" minOccurs="0" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="item" type="common:WeekDay" minOccurs="0" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+      <xs:element name="dailyPeriod" type="common:TimeHourMinutePeriod" minOccurs="1" maxOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

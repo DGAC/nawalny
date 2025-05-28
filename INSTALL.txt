@@ -1,0 +1,75 @@
+# Hypothese 
+
+We suppose the user has access to a Linux environment or whatever OS with Python3 installed.
+The examples are provided with Python v3.12 . 
+
+Good practices propose to use a Python virtual environment for a project. 
+This env allows to install/manipulate packages, pre-requisite isolated from core OS installation. 
+
+## we create a virtual env nammed py3nm , an alias to activate it  
+$ python3.12 -m venv py3nm   
+$ alias py3nm="source $HOME/py3nm/bin/activate"  
+## we enter this env  ( deactivate to leave ) 
+$ py3nm 
+(py3nm) $ pip3 install --upgrade pip  ## to benefit from last version 
+
+## we install nawalny and dependencies from pip repostory
+(py3nm) $ pip3 install nawalny 
+
+The required packages to work with NMB2 api should have been installed :
+. zeep, to address Request/Reply in Soap/Xml,  
+. python-qpid-proton , to address Publish/Subscribe in Amqp 1.0 . 
+
+Few other packages are installed during the process. 
+You can list them on your system, the list below with state version is dated May 2025 ; 
+
+(py3nm) $ pip3 list 
+
+Package              Version
+-------------------- ---------
+attrs                25.3.0
+certifi              2025.1.31
+cffi                 1.17.1
+charset-normalizer   3.4.1
+idna                 3.10
+isodate              0.7.2
+nawalny              0.1
+pip                  25.1.1
+platformdirs         4.3.7
+pycparser            2.22
+python-qpid-proton   0.39.0
+pytz                 2025.2
+requests             2.32.3
+requests-file        2.1.0
+requests-toolbelt    1.0.0
+setuptools           78.1.0
+termcolor            3.1.0
+urllib3              2.3.0
+zeep                 4.3.1
+
+Once you have got your NMB2B certificate usable, 2 files are expected with .pem extension :
+eg. crt.pem, key.pem - stored at your disposal -  you can test your environment.
+
+Find where the examples files have been installed, it could be :
+$HOME/py3nm/lib64/python3.12/site-packages/nawalny/examples/.
+
+Copy the template.conf to your working directory - WD ,  $WD/my.conf . 
+
+You should edit $WD/my.conf and populate : 
+
+{   'swsdlpath': "path where you store Eurocontrol/NMB2B api file : .xsd .wsdl ", 
+    'nmcontext': "PREOPS", 
+    'nmapiindex': "27.0.0",
+    'nmcertpath' : "path to your cert .pem file",
+    'nmkeypath'  : "path to your key .pem file " ,
+    'nmpassword' : None  
+# could be a protection password for your key or None if the key is not cyphered 
+} 
+A very reduced subset of api definition file is provided in the examples directory:
+CommonServices_27.0.0.xsd  GeneralinformationServices_27.0.0.xsd GeneralinformationServices_PREOPS_27.0.0.wsdl
+they are sufficient to launch the tester. 
+
+The use of nawalny_rr_selftest.py should be straightforward once copied in your WD. 
+./nawalny_rr_selftest.py --conf=$WD/my.conf 
+
+Here we go a. 

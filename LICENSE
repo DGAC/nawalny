@@ -470,8 +470,8 @@ safest to attach them to the start of each source file to most effectively
 convey the exclusion of warranty; and each file should have at least the
 "copyright" line and a pointer to where the full notice is found.
 
-    <one line to give the library's name and a brief idea of what it does.>
-    Copyright (C) <year>  <name of author>
+    Nawalny
+    Copyright (C) 2025  PAVET Didier DSNA/DO
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -488,17 +488,13 @@ convey the exclusion of warranty; and each file should have at least the
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
     USA
 
-Also add information on how to contact you by electronic and paper mail.
+Didier PAVET for this matter can be touched at dpa4aviation@gmail.com . 
 
-You should also get your employer (if you work as a programmer) or your
-school, if any, to sign a "copyright disclaimer" for the library, if
-necessary.  Here is a sample; alter the names:
+DGAC/DSNA, hereby disclaims all copyright interest in the
+library `Nawalny` (a library for accessing NMB2B data) written by Didier Pavet 
+GRE, 25 May 2025  acting for DSNA/DO directorate . 
 
-  Yoyodyne, Inc., hereby disclaims all copyright interest in the
-  library `Frob' (a library for tweaking knobs) written by James Random
-  Hacker.
-
-  <signature of Ty Coon>, 1 April 1990
-  Ty Coon, President of Vice
-
-That's all there is to it!
+A very reduce subset of NMB2B API file is provided in examples section 
+courtesy of EUROCONTROL. As mentionned in the README.md file, the user should have 
+registered him/her self as a declared user and possesses a NMB2B certificate to
+connect to the NMB2B . 

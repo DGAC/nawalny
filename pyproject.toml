@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nawalny"
+version = "0.1"
+authors = [
+  { name="Didier Pavet", email="dpa4aviation@gmail.com" },
+]
+description = "A Python3 framework to access Eurocontrol NMB2B api properly"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "logging",
+  "python-qpid-proton",
+  "requests",
+#  "socket",
+#  "ssl",
+  "termcolor", 
+  "zeep>4.1.0",
+#   "gidgethub[httpx]>4.0.0",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Communications", 
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Intended Audience :: Developers" ,
+    "Intended Audience :: Science/Research" 
+]
+# license = "LGPL-3.0-or-later"
+license = "LGPL-2.1-or-later"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/DGAC/nawalny"
+Documentation = "https://gitlab.asap.dsna.fr/didier.pavet/nmaka" 
+Issues = "https://github.com/DGAC/nawalny/issues"
+
+## https://github.com/coz787/nawalny 
+## https://github.com/DGAC/nawalny 
+
