@@ -111,4 +111,4 @@ Browsing https://github.com/DGAC/ you will discover software doing the same job 
 
 # About the name 
 
-Navalnoy was a tiny village near Verdun which was completly devastated during WWI. Its inhabitants, brave and fullish have tried to rebuilt it but without success.  
+Nawalnoy was a tiny village near Verdun which was completly devastated during WWI. Its inhabitants, brave and fullish have tried to rebuilt it but without success.  
