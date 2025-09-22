@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "nawalny"
-version = "0.1"
+version = "0.2"
 authors = [
   { name="Didier Pavet", email="dpa4aviation@gmail.com" },
 ]
@@ -12,11 +12,8 @@ description = "A Python3 framework to access Eurocontrol NMB2B api properly"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
-  "logging",
   "python-qpid-proton",
   "requests",
-#  "socket",
-#  "ssl",
   "termcolor", 
   "zeep>4.1.0",
 #   "gidgethub[httpx]>4.0.0",

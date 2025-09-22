@@ -28,7 +28,7 @@ SubscriptionManagementService, MessagingService proposed by the CommonServices w
     
 import copy,datetime,gzip,logging,os,pprint,re,sys,time
 
-from nawalny_rr import NawalnyAccess,NawalnyRRService,forgeSubscription,simplifyService,\
+from .nawalny_rr import NawalnyAccess,NawalnyRRService,forgeSubscription,simplifyService,\
     forgePort,dnawalnyparam,snawalnytodaytime
 
 # for p/s in amqp mode using qpid-proton 
