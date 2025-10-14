@@ -25,7 +25,7 @@ to Publish / Subscribes feature based on Amqp 1.0 protocol  '''
     USA
     Didier PAVET for this matter can be touched preferably at dpa4aviation@gmail.com '''
 
-import copy,datetime,getopt,logging,os,pprint,re,requests,socket,ssl,sys,time
+import datetime,getopt,logging,os,pprint,re,requests,socket,ssl,sys,time
 from zeep.cache import SqliteCache
 from zeep import Client,Settings
 from zeep.transports import Transport
@@ -299,7 +299,7 @@ ENVPREVAL ENVPREVAL_NEXT        '''
             if self.snmcontext == "PREOPS" :
                 snmurlfile = NawalnyAccess.snmurlpattern.format("preops.", self.snmcontext)
             elif self.snmcontext == "OPS" :
-                snmurlfile = NawalnyAccess.format("", self.snmcontext)
+                snmurlfile = NawalnyAccess.snmurlpattern.format("", self.snmcontext)
             else:
                 serror = "Nawalny context [%s] should be OPS or PREOPS " %  self.snmcontext
                 ologger.error(serror)

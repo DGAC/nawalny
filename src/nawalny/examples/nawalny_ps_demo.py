@@ -30,8 +30,8 @@ import datetime,getopt,gzip,os,pprint,ssl,sys,time
 # from howto40_nm27_r01_lib import NmPublishsubscribeServices, NmAmqpAgent
 from traceback import print_exc
 
-from nawalny_rr import NawalnyAccess,NawalnyRRService,dnawalnyparam,snawalnytodaytime
-from nawalny_ps import NawalnyPSService, NAHandler  
+from nawalny import NawalnyAccess,NawalnyRRService,dnawalnyparam,snawalnytodaytime
+from nawalny import NawalnyPSService, NAHandler  
 
 lcmd1 =  ["create","update"]  # option with --subconf 
 lcmd2 =  ["retrieve","resume","pause","delete","pull"] # option with --uuid 

@@ -6,7 +6,7 @@ this script aims at testing Request / Reply from basic to more sophisticated asp
 import datetime,getopt,logging,os,pprint,re,ssl,sys,time
 from traceback import print_exc
 from termcolor import colored 
-from nawalny_rr import NawalnyAccess,NawalnyRRService,SSLAdapter,snawalnytodaytime,dnawalnyparam
+from nawalny import NawalnyAccess,NawalnyRRService,SSLAdapter,snawalnytodaytime,dnawalnyparam
 
 lpathitem = sys.argv[0].split('/')
 
