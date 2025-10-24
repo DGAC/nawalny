@@ -90,14 +90,14 @@ Note: functional version of subscription '''
         "FlightFilingResult": ["FlightServices", "FlightFilingService"],
         "FlightPlan": ["FlightServices", "FlightManagementService"],
         "MCDM": ["FlowServices", "McdmService"],
-        "Regulations": ["FlowServices", "MeasuresService"],
+        "Regulation": ["FlowServices", "MeasuresService"],
         "Rerouting": ["FlowServices", "MeasuresService"],
         "AIMS": [ "GeneralinformationServices", "AIMsService"] }
 
     d26_27equiv = {
         "ATM_INFORMATION" : "AIMS" ,  # a vérifier 
         "AIRSPACE_DATA" : "AirspaceData" ,
-        "REGULATIONS" : "Regulations" ,
+        "REGULATIONS" : "Regulation" ,
         "REROUTINGS" : "Rerouting" ,
         "EAUP" : "EAUP" , 
         "GNSS_INTERFERENCE" : "GNSSInterference", 
