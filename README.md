@@ -2,7 +2,7 @@
 
 In the aviation world, Eurocontrol is a European pluri-state organization with more than 6 decades of expertise in the field of securing, organizing, optimizing civile aviation operations. 
 
-The Network Management Operation Centre is one of the key elements to smooth trafic flows, manage congestion in finding alternative paths in cooperatiion with Air Navigation Service Providers. 
+The Network Management Operation Centre is one of the key elements to smooth traffic flows, manage congestion in finding alternative paths in cooperatiion with Air Navigation Service Providers. 
 For 15 years, NMOC has developped NMB2B, a business-to-business online data service. 
 It is strongly advised to learn what NMB2B is all about. 
 It is required to have an account and an access via a certificate to this set of services, 
