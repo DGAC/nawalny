@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "nawalny"
-version = "0.3"
+version = "0.31"
 authors = [
   { name="Didier Pavet", email="dpa4aviation@gmail.com" },
 ]
@@ -16,7 +16,6 @@ dependencies = [
   "requests",
   "termcolor", 
   "zeep>4.1.0",
-#   "gidgethub[httpx]>4.0.0",
 ]
 
 classifiers = [
