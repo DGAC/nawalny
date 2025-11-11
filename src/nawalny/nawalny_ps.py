@@ -92,7 +92,8 @@ Note: functional version of subscription '''
         "MCDM": ["FlowServices", "McdmService"],
         "Regulation": ["FlowServices", "MeasuresService"],
         "Rerouting": ["FlowServices", "MeasuresService"],
-        "AIMS": [ "GeneralinformationServices", "AIMsService"] }
+        "AIMS": [ "GeneralinformationServices", "AIMsService"],
+        "Passengers": ["FlightServices", "PassengerDemandPredictionService"]}
 
     d26_27equiv = {
         "ATM_INFORMATION" : "AIMS" ,  # a vérifier 
@@ -106,7 +107,9 @@ Note: functional version of subscription '''
         "FLIGHT_FILING_RESULT" : "FlightFilingResult" , 
         "FFICE_PUBLICATION" : "FficePublication" , 
         "FFICE_FLIGHT_FILING" : "FlightFilingResult" ,
-        "MCDM" : "MCDM" }
+        "MCDM" : "MCDM",
+# apparait en NM28         
+        "PASSENGERS": "Passengers" }
 #        ore_service = re.compile('(.*)Service$' )
     samqpendpoint = "amqps://pubsub.{:s}nm.eurocontrol.int:5671"
         

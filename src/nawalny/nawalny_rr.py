@@ -280,7 +280,7 @@ breadagain allowes to force the parsing of wsdl '''
             try:
                 onewrrservice = NawalnyRRService(self,sservicesname,self.snmcontext)
             except:
-                print_exc()
+                # print_exc()
                 serror = "Nawalny erreur dans la création du set de services %s" % sservicesname
                 ologger.error(serror)
                 raise Exception(serror)

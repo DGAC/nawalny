@@ -67,7 +67,11 @@ def neatconflines(ofile):
         else:
             lrealine.append(sali)
     return "".join(lrealine)
-
+## to highlight result of test 
+def success(stxt):
+    return colored(stxt,'green')
+def failure(stxt):
+    return colored(stxt,'red')
 class DESAdapter(SSLAdapter):
     ''' A TransportAdapter that re-enables 3DES support in Requests. 
 it show how to subclass SSLAdapter and tweaking ssl things '''
@@ -87,7 +91,7 @@ def failure(stxt):
 
 if __name__ == '__main__':
     sacmd,bdebug,sconffilename = mygetopt(sys.argv[0],sys.argv[1:])
-    ologger.debug("%s %s %s %s",sacmd,bdebug,sconffilename )
+    ologger.debug("%s %s %s",sacmd,bdebug,sconffilename )
     
     try:
         oconffile = open(sconffilename)
@@ -169,8 +173,8 @@ if __name__ == '__main__':
         except:
             print_exc()
             sys.exit(1)            
-    print("The end for selftest00.")
-    sys.exit(0)        
+    #print("The end for selftest00.")
+    #sys.exit(0)        
     lavailablewsdl = ["GeneralinformationServices", "CommonServices", "AirspaceServices",  
                        "FlightServices", "FlowServices", "FficeServices"]  
     # "FficeServices" pose un problème lié à zeep (déjà vu) zeep/xsd/types/collection.py 
@@ -180,11 +184,9 @@ if __name__ == '__main__':
         try:
             omainserv = onmaccess.get_asetofservice(sawsdl)
         except:
-            serror = "cannot access %s main service " % sawsdl
-            ologger.debug(serror)
-            print_exc()
+            print(failure( "cannot access %s main service " % sawsdl ) )
         else:
-            print("---- %s ----" % sawsdl)
+            print(success("---- %s ----" % sawsdl)) 
             ntotalreq += omainserv.doc()  
         # ogeninfoservs.doc() 
     print( "-" * 10 )
