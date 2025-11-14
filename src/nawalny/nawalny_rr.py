@@ -50,9 +50,12 @@ def snawalnytodaytime() -> str :
     return  datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d %H:%M:%S") 
 def snawalnytoday() -> str :
     return  datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%d")
-def snawalnydate(adatetime: datetime.datetime) -> str : 
+def snawalnydate2s(adatetime: datetime.datetime) -> str : 
     ''' convert a datime in the string awaited by NM '''
     return( adatetime.strftime("%Y-%m-%d %H:%M") )
+def danawalnys2date(snmdate):
+    '''2022-08-04 09:46:00'''
+    return datetime.datetime.strptime(snmdate,"%Y-%m-%d %H:%M:%S") 
 
 def dnawalnywindow(dstart:datetime.datetime, dend:datetime.datetime) -> dict:
     ''' forge a dict as awaited by NM as a traffic window '''
