@@ -59,7 +59,7 @@ def danawalnys2date(snmdate):
 
 def dnawalnywindow(dstart:datetime.datetime, dend:datetime.datetime) -> dict:
     ''' forge a dict as awaited by NM as a traffic window '''
-    return {'wef': snawalnydate(dstart), 'unt':snawalnydate(dend) }
+    return {'wef': snawalnydate2s(dstart), 'unt':snawalnydate2s(dend) }
 
 #  -- service methods -- derived from nmb2b construction principles 
 ORE_SERVICE = re.compile('(.*)Service$' ) 
