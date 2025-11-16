@@ -73,3 +73,5 @@ The use of nawalny_rr_selftest.py should be straightforward once copied in your 
 ./nawalny_rr_selftest.py --conf=$WD/my.conf 
 
 Here we go a. 
+
+TUTORIALS.md should expose other examples provided.  
