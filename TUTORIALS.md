@@ -24,7 +24,7 @@ Usage: nawalny_ps_demo.py [--help] [--debug] --nmconf=<file> --cmd=<cmd> [--subc
 
 ``` 
 
-## howto04na_r01.py : downloading the whole set of documentation, API, examples. 
+## getNmLastInfo.py : downloading the whole set of documentation, API, examples. 
 
 Working with GeneralinformationServices_PREOPS_27.0.0.wsdl set of services only is **very limited**. 
 The whole purpose of howto04na_r01.py  is to use GeneralinformationServices to download all
@@ -34,9 +34,9 @@ The GeneralinformationServices services used by howto04na_r01.py are :
 retrieveNMReleaseInformation, queryNMB2BReferenceManuals, queryNMB2BWSDLs, queryNMB2BScenarios, queryNMB2BAddendaErrata . 
 
 ``` 
-./howto04na_r01.py --help 
-howto04na_r01.py with ERROR level of logging
-Usage: howto04na_r01.py [--help] [--debug] [--nodownload] --dir=<dir> --conf=<file> 
+./getNmLastInfo.py --help 
+getNmLastInfo.py with ERROR level of logging
+Usage: getNmLastInfo.py [--help] [--debug] [--nodownload] --dir=<dir> --conf=<file> 
 dir should be a directory with write auth , if it does not exist we attempt to create it 
 conf file defines where to find NMB2B definition, certificates stuff 
 --nodownload allows to extract list of files ONLY and stop before downloading file (testing purposes)
@@ -47,10 +47,10 @@ the required set of files - be patient a total of 60 Mb of compressed data will 
 
 ``` 
 # first to test 
-./howto04na_r01.py --conf=$WD/my.conf --nodownload 
+./getNmLastInfo.py --conf=$WD/my.conf --nodownload 
 
 # second to download actually to a temp dir HOME/tmp/nmreffile   created by the occasion 
-./howto04na_r01.py --conf=$WD/my.conf --dir=$HOME/tmp/nmreffile 
+./getNmLastInfo.py --conf=$WD/my.conf --dir=$HOME/tmp/nmreffile 
 
 ``` 
 
