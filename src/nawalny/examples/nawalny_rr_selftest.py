@@ -139,22 +139,24 @@ if __name__ == '__main__':
         print_exc()
         sys.exit(1)
         
-    lret = onmaccess.test_tech()
-    # eg. call with "https://www.b2b.nm.eurocontrol.int/B2B_PREOPS/gateway/spec/27.0.0 "  
-    # with a preops cert to raise wrong cred 
-    print(lret)
-    if lret[0] : 
-        print(success("Technical Acces to nmb2b is valid"))
-    else:
-        print(failure("Technical Acces to nmb2b is INVALID.stop."))
-        sys.exit(0)
-    
+
     lret = onmaccess.test_std()        
     print(lret[1])
     if lret[0] : 
         print(success("Soap Acces to nmb2b is valid"))
     else:
         print(failure("Soap Acces to nmb2b is INVALID"))
+        ## new : we run tech test only if standard test is invalid 
+        ## cause test_tech is considered as an error from NM point of view 
+        lret = onmaccess.test_tech()
+        # eg. call with "https://www.b2b.nm.eurocontrol.int/B2B_PREOPS/gateway/spec/27.0.0 "  
+        # with a preops cert to raise wrong cred 
+        print(lret)
+        if lret[0] : 
+            print(success("Technical Acces to nmb2b is valid"))
+        else:
+            print(failure("Technical Acces to nmb2b is INVALID.stop."))
+        
         sys.exit(1)       
     try:
         print(onmaccess.odefaultservs)
@@ -162,7 +164,7 @@ if __name__ == '__main__':
         print_exc()
         sys.exit(1)
     print("first")
-    linforeq = ["retrieveNMReleaseInformation"] # , "retrieveUserInformation"]  
+    linforeq = ["retrieveNMReleaseInformation", "retrieveUserInformation"]  
     ogeninfoservs =  onmaccess.get_asetofservice("GeneralinformationServices")  ## or odefaultservs
     
     # new pythonic form
@@ -173,8 +175,8 @@ if __name__ == '__main__':
         except:
             print_exc()
             sys.exit(1)            
-    #print("The end for selftest00.")
-    #sys.exit(0)        
+    # print("The end for selftest00.")
+    # sys.exit(0)        
     lavailablewsdl = ["GeneralinformationServices", "CommonServices", "AirspaceServices",  
                        "FlightServices", "FlowServices", "FficeServices"]  
     # "FficeServices" pose un problème lié à zeep (déjà vu) zeep/xsd/types/collection.py 
@@ -191,4 +193,5 @@ if __name__ == '__main__':
         # ogeninfoservs.doc() 
     print( "-" * 10 )
     print("A total of {:d} Soap Request documented. ".format(ntotalreq))
-    sys.exit(0)
+
+sys.exit(0)
