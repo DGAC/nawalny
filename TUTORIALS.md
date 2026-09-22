@@ -54,6 +54,15 @@ the required set of files - be patient a total of 60 Mb of compressed data will 
 
 ``` 
 
+## getUserInfo.py : obtaining user info and cert profile 
 
+GeneralinformationServices  ('NMB2BInfoService',"retrieveUserInformation") allow to know more 
+about our own profile, rights, ... 
+You have the info in rough mode as it stands from retrieveUserInformation , and add an --fmt option 
+(obtaining the profile in .csv or .xlsx in a file defined by 'nmcertname' conf parameters )
 
-
+``` 
+./getUserInfo.py --conf=$HOME/dev/nmb2b_conf/dpa.conf
+./getUserInfo.py --conf=$HOME/dev/nmb2b_conf/dpa.conf --fmt=csv
+./getUserInfo.py --conf=$HOME/dev/nmb2b_conf/dpa.conf --fmt=xlsx
+``` 
