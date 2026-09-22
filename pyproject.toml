@@ -16,6 +16,7 @@ dependencies = [
   "requests",
   "termcolor", 
   "zeep>4.1.0",
+  "xlsxwriter"
 ]
 
 classifiers = [
